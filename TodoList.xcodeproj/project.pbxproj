@@ -8,24 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		7FC1C7152020CC7800E7F4F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1C7142020CC7800E7F4F7 /* AppDelegate.m */; };
-		7FC1C7182020CC7800E7F4F7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1C7172020CC7800E7F4F7 /* ViewController.m */; };
 		7FC1C71B2020CC7800E7F4F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC1C7192020CC7800E7F4F7 /* Main.storyboard */; };
 		7FC1C71D2020CC7800E7F4F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FC1C71C2020CC7800E7F4F7 /* Assets.xcassets */; };
 		7FC1C7202020CC7800E7F4F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FC1C71E2020CC7800E7F4F7 /* LaunchScreen.storyboard */; };
 		7FC1C7232020CC7800E7F4F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1C7222020CC7800E7F4F7 /* main.m */; };
+		7FC1C72B2020CEF500E7F4F7 /* TodoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1C72A2020CEF500E7F4F7 /* TodoTableViewController.m */; };
+		7FC1C72E2020D0AA00E7F4F7 /* TodoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1C72D2020D0AA00E7F4F7 /* TodoModel.m */; };
+		7FC1C7312020D96E00E7F4F7 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FC1C7302020D96E00E7F4F7 /* AddViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7FC1C7102020CC7800E7F4F7 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FC1C7132020CC7800E7F4F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7FC1C7142020CC7800E7F4F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7FC1C7162020CC7800E7F4F7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7FC1C7172020CC7800E7F4F7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7FC1C71A2020CC7800E7F4F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7FC1C71C2020CC7800E7F4F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7FC1C71F2020CC7800E7F4F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7FC1C7212020CC7800E7F4F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FC1C7222020CC7800E7F4F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7FC1C7292020CEF500E7F4F7 /* TodoTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoTableViewController.h; sourceTree = "<group>"; };
+		7FC1C72A2020CEF500E7F4F7 /* TodoTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewController.m; sourceTree = "<group>"; };
+		7FC1C72C2020D0AA00E7F4F7 /* TodoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodoModel.h; sourceTree = "<group>"; };
+		7FC1C72D2020D0AA00E7F4F7 /* TodoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoModel.m; sourceTree = "<group>"; };
+		7FC1C72F2020D96E00E7F4F7 /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
+		7FC1C7302020D96E00E7F4F7 /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,13 +66,17 @@
 			children = (
 				7FC1C7132020CC7800E7F4F7 /* AppDelegate.h */,
 				7FC1C7142020CC7800E7F4F7 /* AppDelegate.m */,
-				7FC1C7162020CC7800E7F4F7 /* ViewController.h */,
-				7FC1C7172020CC7800E7F4F7 /* ViewController.m */,
 				7FC1C7192020CC7800E7F4F7 /* Main.storyboard */,
 				7FC1C71C2020CC7800E7F4F7 /* Assets.xcassets */,
 				7FC1C71E2020CC7800E7F4F7 /* LaunchScreen.storyboard */,
 				7FC1C7212020CC7800E7F4F7 /* Info.plist */,
 				7FC1C7222020CC7800E7F4F7 /* main.m */,
+				7FC1C7292020CEF500E7F4F7 /* TodoTableViewController.h */,
+				7FC1C72A2020CEF500E7F4F7 /* TodoTableViewController.m */,
+				7FC1C72C2020D0AA00E7F4F7 /* TodoModel.h */,
+				7FC1C72D2020D0AA00E7F4F7 /* TodoModel.m */,
+				7FC1C72F2020D96E00E7F4F7 /* AddViewController.h */,
+				7FC1C7302020D96E00E7F4F7 /* AddViewController.m */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -142,8 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FC1C7182020CC7800E7F4F7 /* ViewController.m in Sources */,
+				7FC1C7312020D96E00E7F4F7 /* AddViewController.m in Sources */,
 				7FC1C7232020CC7800E7F4F7 /* main.m in Sources */,
+				7FC1C72E2020D0AA00E7F4F7 /* TodoModel.m in Sources */,
+				7FC1C72B2020CEF500E7F4F7 /* TodoTableViewController.m in Sources */,
 				7FC1C7152020CC7800E7F4F7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

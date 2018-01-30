@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AddViewController.h
 //  TodoList
 //
 //  Created by ITHS on 2018-01-30.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface AddViewController : UIViewController
+@property (nonatomic) NSMutableArray *todoArray;
 
 @end
-
