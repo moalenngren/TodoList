@@ -12,7 +12,7 @@
 @property (nonatomic) NSMutableArray *todoArray;
 @property (nonatomic) NSMutableArray *doneArray;
 
--(void)getUserDefaultsTodo;
--(void)setUserDefaultsTodo;
+-(void)getUserDefaults;
+-(void)setUserDefaults;
 
 @end

@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *todoText;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
-
+@property (weak, nonatomic) IBOutlet UISwitch *markSwitch;
 
 @end
 
@@ -29,9 +29,15 @@
 }
 
 - (IBAction)addTodo:(id)sender {
-    NSDictionary *item = @{@"text": self.todoText.text, @"done": @(NO)};
-    NSLog(@"text in dictionary is: %@", item[@"text"]);
-    [self.model.todoArray addObject:item];
+    if(self.markSwitch.isOn){
+        NSDictionary *item = @{@"text": self.todoText.text, @"done": @(NO), @"important": @(YES)};
+        [self.model.todoArray insertObject:item atIndex:0];
+    } else {
+        NSDictionary *item = @{@"text": self.todoText.text, @"done": @(NO), @"important": @(NO)};
+        [self.model.todoArray addObject:item];
+    }
+    
+    [self.model setUserDefaults];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
