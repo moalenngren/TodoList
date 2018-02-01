@@ -10,7 +10,9 @@
 
 @interface TodoModel : NSObject
 @property (nonatomic) NSMutableArray *todoArray;
+@property (nonatomic) NSMutableArray *doneArray;
 
--(void)setTodoArray:(NSString*)text;
+-(void)getUserDefaultsTodo;
+-(void)setUserDefaultsTodo;
 
 @end

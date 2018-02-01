@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TodoModel.h"
 
 @interface AddViewController : UIViewController
-@property (nonatomic) NSMutableArray *todoArray;
+@property (nonatomic) TodoModel *model;
 
 @end

@@ -10,25 +10,46 @@
 
 @implementation TodoModel
 
-
--(void)setTodoArray:(NSString*)text {
-
-    [self.todoArray addObject:text];
-    [self setUserDefaults];
-    
+-(instancetype)init {
+    self = [super init];
+    if (self) {
+        if(self.todoArray == nil){
+            self.todoArray = @[].mutableCopy;
+            self.doneArray = @[].mutableCopy;
+        } else {
+            [self getUserDefaultsTodo];
+        }
+    }
+    return self;
 }
 
--(void)setUserDefaults {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:self.todoArray forKey:@"tableViewArray"];
-    [userDefaults synchronize];
+-(NSArray*)getAllDone {
+    NSMutableArray *done = @[].mutableCopy;
+    for(int i = 0; 0 < self.doneArray; i++){
+        
+        NSDictionary *item = self.todoArray[i];
+        if([item[@"done"] boolValue]){
+            [done addObject:self.doneArray[i]];
+        }
+    }
+    return done;
 }
 
--(NSArray*)getUserDefaults {
+-(NSInteger)getNumberOfDone {
+    return [self getAllDone].count;
+}
+
+-(void)setUserDefaultsTodo {
+    NSUserDefaults *userDefaultsTodo = [NSUserDefaults standardUserDefaults];
+    [userDefaultsTodo setObject:self.todoArray forKey:@"todoArray"];
+      [userDefaultsTodo setObject:self.doneArray forKey:@"doneArray"];
+    [userDefaultsTodo synchronize];
+}
+
+-(void)getUserDefaultsTodo {
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray *tableViewArray = [userDefaults objectForKey:@"tableViewArray"];
-    return tableViewArray;
+    NSUserDefaults *userDefaultsTodo = [NSUserDefaults standardUserDefaults];
+    self.todoArray = [userDefaultsTodo objectForKey:@"todoArray"];
 }
 
 @end

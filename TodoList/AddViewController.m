@@ -7,13 +7,13 @@
 //
 
 #import "AddViewController.h"
-#import "TodoModel.h"
+
 
 @interface AddViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *todoText;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (nonatomic) TodoModel *model;
+
 
 @end
 
@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.model = [[TodoModel alloc] init];
     self.addButton.layer.cornerRadius = 10;
     self.addButton.clipsToBounds = YES;
     self.backgroundImage.layer.cornerRadius = 10;
@@ -30,14 +29,14 @@
 }
 
 - (IBAction)addTodo:(id)sender {
-  //  [self.todoArray addObject:self.todoText.text];
-    [self.model setTodoArray:self.todoText.text];
+    NSDictionary *item = @{@"text": self.todoText.text, @"done": @(NO)};
+    NSLog(@"text in dictionary is: %@", item[@"text"]);
+    [self.model.todoArray addObject:item];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

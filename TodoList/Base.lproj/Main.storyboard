@@ -34,7 +34,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Todo List" id="prx-bW-y7W">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dse-iM-2OX">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="dse-iM-2OX">
                             <connections>
                                 <segue destination="f0y-hI-2Z2" kind="show" identifier="AddSegue" id="3c5-V2-JEv"/>
                             </connections>
