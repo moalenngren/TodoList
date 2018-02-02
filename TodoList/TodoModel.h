@@ -14,5 +14,6 @@
 
 -(void)getUserDefaults;
 -(void)setUserDefaults;
+-(void)addItemToTodo:(BOOL)b andText:(NSString*)text;
 
 @end

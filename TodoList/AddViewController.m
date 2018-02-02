@@ -29,30 +29,12 @@
 }
 
 - (IBAction)addTodo:(id)sender {
-    if(self.markSwitch.isOn){
-        NSDictionary *item = @{@"text": self.todoText.text, @"done": @(NO), @"important": @(YES)};
-        [self.model.todoArray insertObject:item atIndex:0];
-    } else {
-        NSDictionary *item = @{@"text": self.todoText.text, @"done": @(NO), @"important": @(NO)};
-        [self.model.todoArray addObject:item];
-    }
-    
-    [self.model setUserDefaults];
+    [self.model addItemToTodo:self.markSwitch.isOn andText:self.todoText.text];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -19,8 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.model = [[TodoModel alloc] init];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
@@ -40,7 +38,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section == 0){
-         return self.model.todoArray.count;
+        return self.model.todoArray.count;
     } else {
         return self.model.doneArray.count;
     }
@@ -50,22 +48,26 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TodoCell" forIndexPath:indexPath];
     
     if(indexPath.section == 0){
-         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
         NSDictionary *item = self.model.todoArray[indexPath.row];
         cell.textLabel.text = item[@"text"];
         
         if(item[@"important"] == @(YES)){
             cell.imageView.image = [UIImage imageNamed:@"explanationmark"];
+        } else {
+            cell.imageView.image = nil;
         }
-        
     } else {
-          cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
         NSDictionary *item = self.model.doneArray[indexPath.row];
         cell.textLabel.text = item[@"text"];
         
         if(item[@"important"] == @(YES)){
             cell.imageView.image = [UIImage imageNamed:@"explanationmark"];
+        } else {
+            cell.imageView.image = nil;
         }
+        
     }
     return cell; 
 }
@@ -97,44 +99,31 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
         if(indexPath.section == 0){
             [self.model.todoArray removeObjectAtIndex:indexPath.row];
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         } else {
             [self.model.doneArray removeObjectAtIndex:indexPath.row];
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         }
-        
-      [self.tableView reloadData];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+    [self.tableView reloadData];
+    [self.model setUserDefaults];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if(indexPath.section == 0){
-            NSMutableDictionary *item = [self.model.todoArray[indexPath.row] mutableCopy];
-           // UITableViewCellAccessoryCheckmark;
+            NSDictionary *item = self.model.todoArray[indexPath.row];
             [self.model.doneArray addObject:item];
             [self.model.todoArray removeObject:item];
         } else {
-             NSMutableDictionary *item = [self.model.doneArray[indexPath.row] mutableCopy];
-           //  UITableViewCellAccessoryNone;
-             [self.model.todoArray addObject:item];
-             [self.model.doneArray removeObject:item];
+            NSDictionary *item = self.model.doneArray[indexPath.row];
+            [self.model.todoArray addObject:item];
+            [self.model.doneArray removeObject:item];
         }
-    NSLog(@"Done array: %@", self.model.doneArray);
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.model setUserDefaults];
     [self.tableView reloadData];
 }
-/*
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-} */
-
 
 #pragma mark - Navigation
 
