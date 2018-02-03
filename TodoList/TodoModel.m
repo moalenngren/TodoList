@@ -17,13 +17,10 @@
         if(self.todoArray == nil){
             self.todoArray = @[].mutableCopy;
         }
-        
-        
         if(self.doneArray == nil) {
             self.doneArray = @[].mutableCopy;
         }
     }
-
     return self;
 }
 
@@ -35,7 +32,6 @@
 }
 
 -(void)getUserDefaults {
-    
     NSUserDefaults *userDefaultsTodo = [NSUserDefaults standardUserDefaults];
     self.todoArray = [[userDefaultsTodo objectForKey:@"todoArray"] mutableCopy];
     self.doneArray = [[userDefaultsTodo objectForKey:@"doneArray"] mutableCopy];
@@ -49,16 +45,34 @@
         NSDictionary *item = @{@"text": text, @"important": @(NO)};
         [self.todoArray addObject:item];
     }
-    
     [self setUserDefaults];
 }
-/*
--(void)setImage:(NSObject*)item {
-    if(item[@"important"]){
-        cell.imageView.image = [UIImage imageNamed:@"explanationmark"];
+
+-(int)getRows:(int)section {
+    if(section == 0){
+        return (int)self.todoArray.count;
     } else {
-        cell.imageView.image = nil;
-    } 
-} */
+        return (int)self.doneArray.count;
+    }
+}
+
+-(void)deleteAllItems{
+    self.todoArray = @[].mutableCopy;
+    self.doneArray = @[].mutableCopy;
+     [self setUserDefaults];
+}
+
+-(void)selectCell:(int)section andIndexPath:(int)nr {
+    
+    if(section == 0){
+        NSDictionary *item = self.todoArray[nr];
+        [self.doneArray addObject:item];
+        [self.todoArray removeObject:item];
+    } else {
+        NSDictionary *item = self.doneArray[nr];
+        [self.todoArray addObject:item];
+        [self.doneArray removeObject:item];
+    }
+}
 
 @end

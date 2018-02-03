@@ -15,5 +15,8 @@
 -(void)getUserDefaults;
 -(void)setUserDefaults;
 -(void)addItemToTodo:(BOOL)b andText:(NSString*)text;
+-(int)getRows:(int)section;
+-(void)deleteAllItems;
+-(void)selectCell:(int)section andIndexPath:(int)nr;
 
 @end

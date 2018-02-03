@@ -12,6 +12,8 @@
 
 @interface TodoTableViewController ()
 @property (nonatomic) TodoModel *model;
+@property (nonatomic) UITableViewCell *cell; 
+@property (nonatomic) NSDictionary *item;
 @end
 
 @implementation TodoTableViewController
@@ -37,39 +39,27 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section == 0){
-        return self.model.todoArray.count;
-    } else {
-        return self.model.doneArray.count;
-    }
+   return [self.model getRows:(int)section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TodoCell" forIndexPath:indexPath];
+    self.cell = [tableView dequeueReusableCellWithIdentifier:@"TodoCell" forIndexPath:indexPath];
     
     if(indexPath.section == 0){
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        NSDictionary *item = self.model.todoArray[indexPath.row];
-        cell.textLabel.text = item[@"text"];
-        
-        if(item[@"important"] == @(YES)){
-            cell.imageView.image = [UIImage imageNamed:@"explanationmark"];
-        } else {
-            cell.imageView.image = nil;
-        }
+        self.cell.accessoryType = UITableViewCellAccessoryNone;
+        self.item = self.model.todoArray[indexPath.row];
     } else {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        NSDictionary *item = self.model.doneArray[indexPath.row];
-        cell.textLabel.text = item[@"text"];
-        
-        if(item[@"important"] == @(YES)){
-            cell.imageView.image = [UIImage imageNamed:@"explanationmark"];
-        } else {
-            cell.imageView.image = nil;
-        }
-        
+        self.cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.item = self.model.doneArray[indexPath.row];
     }
-    return cell; 
+    self.cell.textLabel.text = self.item[@"text"];
+    if(self.item[@"important"] == @(YES)){
+        self.cell.imageView.image = [UIImage imageNamed:@"explanationmark"];
+    } else {
+        self.cell.imageView.image = nil;
+    }
+    
+    return self.cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -111,16 +101,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section == 0){
-            NSDictionary *item = self.model.todoArray[indexPath.row];
-            [self.model.doneArray addObject:item];
-            [self.model.todoArray removeObject:item];
-        } else {
-            NSDictionary *item = self.model.doneArray[indexPath.row];
-            [self.model.todoArray addObject:item];
-            [self.model.doneArray removeObject:item];
-        }
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self.model selectCell:(int)indexPath.section andIndexPath:(int)indexPath.row];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.model setUserDefaults];
     [self.tableView reloadData];
 }
